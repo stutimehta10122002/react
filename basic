@@ -1,0 +1,221 @@
+public/index.html
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+2. src/components/Header.js
+javascript
+Copy code
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Header = () => {
+  return (
+    <header>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
+
+export default Header;
+3. src/components/Footer.js
+javascript
+Copy code
+import React from 'react';
+
+const Footer = () => {
+  return (
+    <footer>
+      <p>&copy; 2024 My React App</p>
+    </footer>
+  );
+};
+
+export default Footer;
+4. src/components/Home.js
+javascript
+Copy code
+import React from 'react';
+
+const Home = () => {
+  return (
+    <div>
+      <h1>Welcome to Home Page</h1>
+      <p>This is the home page of our React application.</p>
+    </div>
+  );
+};
+
+export default Home;
+5. src/components/About.js
+javascript
+Copy code
+import React from 'react';
+
+const About = () => {
+  return (
+    <div>
+      <h1>About Us</h1>
+      <p>This is the about page of our React application.</p>
+    </div>
+  );
+};
+
+export default About;
+6. src/components/Contact.js
+javascript
+Copy code
+import React from 'react';
+
+const Contact = () => {
+  return (
+    <div>
+      <h1>Contact Us</h1>
+      <p>This is the contact page of our React application.</p>
+    </div>
+  );
+};
+
+export default Contact;
+7. src/styles/App.css
+css
+Copy code
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+header {
+  background-color: #282c34;
+  padding: 10px;
+  color: white;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+footer {
+  background-color: #282c34;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+div {
+  padding: 20px;
+}
+8. src/App.js
+javascript
+Copy code
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import './styles/App.css';
+
+const App = () => {
+  return (
+    <Router>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+        </Switch>
+        <Footer />
+      </div>
+    </Router>
+  );
+};
+
+export default App;
+9. src/index.js
+javascript
+Copy code
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './styles/App.css';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+10. package.json
+json
+Copy code
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
